@@ -1,0 +1,35 @@
+Modelos implicados al generar una conciliación:
+
+account.bank.statement (Modelo: account.bank.statement):
+Representa un extracto bancario que contiene los movimientos bancarios.
+
+account.bank.statement.line (Modelo: account.bank.statement.line):
+Representa una línea en un extracto bancario y está vinculada a un account.move para la conciliación.
+
+account.move (Modelo: account.move):
+Representa un asiento contable que registra transacciones financieras.
+Los movimientos bancarios deben conciliarse con los registros de este modelo.
+
+account.move.line (Modelo: account.move.line):
+Representa una línea en un asiento contable. Cada línea contiene información detallada sobre una transacción específica.
+Durante la conciliación, las líneas de movimientos bancarios se concilian con las líneas de asientos contables.
+
+account.partial.reconcile (Modelo: account.partial.reconcile):
+Representa una conciliación parcial entre dos líneas de asientos contables.
+Se utiliza para gestionar las conciliaciones parciales en las líneas contables.
+
+account.reconcile.model (Modelo: account.reconcile.model):
+Define modelos de conciliación, que permiten automatizar ciertos procesos de conciliación basados en reglas.
+
+------------------------------------------------------------------------------------------------------------------------
+
+En qué Consiste la Conciliación Contable:
+La conciliación contable es el proceso de comparar y ajustar las transacciones registradas en los libros contables de
+una empresa con los registros de sus extractos bancarios. El objetivo es garantizar que los datos contables reflejen con
+precisión las transacciones financieras reales. La conciliación puede implicar la identificación de transacciones no
+registradas, la corrección de errores, la conciliación de saldos y la confirmación de la precisión de los registros
+contables y bancarios.
+
+En resumen, la conciliación contable en Odoo es crucial para mantener la integridad de los datos financieros,
+garantizando que las transacciones reflejadas en el sistema contable coincidan con las transacciones reales en las
+cuentas bancarias u otros medios de pago.

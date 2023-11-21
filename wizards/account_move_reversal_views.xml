@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_account_move_reversal_inherit" model="ir.ui.view">
+        <field name="name">view.account.move.reversal.inherit</field>
+        <field name="model">account.move.reversal</field>
+        <field name="inherit_id" ref="account.view_account_move_reversal"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="user_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

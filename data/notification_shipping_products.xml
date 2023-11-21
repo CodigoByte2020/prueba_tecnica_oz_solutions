@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="notification_shipping_products" model="mail.template">
+            <field name="name">Notificación: Envío de productos</field>
+            <field name="model_id" ref="prueba_tecnica_oz_solutions.model_shipping_products"/>
+            <field name="email_from">${object.env.user.login | safe}</field>
+            <field name="email_to">${object.stock_picking_id.partner_id.email}</field>
+            <field name="subject">Envío de productos</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Estimado(a) cliente(a) le informamos que el envío de sus productos ha sido realizado.
+                        <br/>
+                        % if object.informative_note:
+                            Nota informativa: ${object.informative_note}
+                        % endif
+                        ${object.document_file}
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

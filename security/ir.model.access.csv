@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_create,perm_read,perm_write,perm_unlink
+access_shipping_products,access_shipping_products,model_shipping_products,base.group_user,1,1,1,1
+access_stock_balance_report,access_stock_balance_report,model_stock_balance_report,base.group_user,1,1,1,1

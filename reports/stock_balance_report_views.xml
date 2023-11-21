@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="stock_balance_report_view_search" model="ir.ui.view">
+        <field name="name">stock.balance.report.view.search</field>
+        <field name="model">stock.balance.report</field>
+        <field name="arch" type="xml">
+            <search string="Almacén">
+                <field name="location_id"/>
+                <field name="product_id"/>
+                <field name="category_name"/>
+                <field name="uom_name"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_location_id" string="Almacén" domain="[]" context="{'group_by': 'location_id'}"/>
+                    <filter name="group_by_product_id" string="Producto" domain="[]" context="{'group_by': 'product_id'}"/>
+                    <filter name="group_by_category_name" string="Categoría de producto" domain="[]" context="{'group_by': 'category_name'}"/>
+                    <filter name="group_by_uom_name" string="Unidad de medida" domain="[]" context="{'group_by': 'uom_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="stock_balance_report_view_pivot" model="ir.ui.view">
+        <field name="name">stock.balance.report.view.pivot</field>
+        <field name="model">stock.balance.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Análisis de saldos de stock por almacén" sample="1">
+                <field name="location_id" type="row"/>
+                <field name="product_id" type="row"/>
+                <field name="category_name" type="row"/>
+                <field name="uom_name" type="row"/>
+                <field name="quantity" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="stock_balance_report_view_tree" model="ir.ui.view">
+        <field name="name">stock.balance.report.view.tree</field>
+        <field name="model">stock.balance.report</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="location_id"/>
+                <field name="product_name"/>
+                <field name="category_name"/>
+                <field name="uom_name"/>
+                <field name="quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_balance_report_action" model="ir.actions.act_window">
+        <field name="name">Reporte de stock por almacén</field>
+        <field name="res_model">stock.balance.report</field>
+        <field name="view_mode">tree,pivot</field>
+        <field name="context">{'search_default_group_by_location_id': 1, 'search_default_group_by_product_id': 1}
+        </field>
+    </record>
+
+    <menuitem id="stock_move_line_menu"
+              name="Reporte de stock por almacén"
+              action="stock_balance_report_action"
+              sequence="200"
+              parent="stock.menu_warehouse_report"/>
+</odoo>
